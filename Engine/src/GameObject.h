@@ -1,6 +1,8 @@
 #pragma once 
 
 #include "MathUtils.h"
+#include "GraphicsOpenGL.h"
+#include <SDL.h>
 
 class Graphics;
 

@@ -1,4 +1,4 @@
-#include "Cube.h"
+#include "Projectile.h"
 #include <SDL_opengl.h>
 #include <iostream>
 #include <InputManager.h>
@@ -9,23 +9,33 @@ struct Vertex
 	Vector4 color;
 };
 
-Cube::Cube()
+
+void Projectile::SetSpeed(float speed)
+{
+	this->speed = speed;
+}
+Projectile::Projectile()
 {
 	_transform.position = Vector3::Zero();
 	_transform.rotation = Vector3::Zero();
-	_transform.scale = Vector3(SPACESHIP_SIZE, SPACESHIP_SIZE, SPACESHIP_SIZE);
+	_transform.scale = Vector3(PROJECTILE_SIZE, PROJECTILE_SIZE, PROJECTILE_SIZE);
 }
 
-Cube::Cube(Vector3 position)
+Projectile::Projectile(Vector3 position)
 {
 	_transform.position = position;
 	_transform.rotation = Vector3::Zero();
-	_transform.scale = Vector3(SPACESHIP_SIZE, SPACESHIP_SIZE, SPACESHIP_SIZE);
+	_transform.scale = Vector3(PROJECTILE_SIZE, PROJECTILE_SIZE, PROJECTILE_SIZE);
 }
 
 //Vertex *vertices = nullptr;
 
-void Cube::Initialize(Graphics *graphics)
+void Projectile::SetPosition(Vector3 position)
+{
+	_transform.position = position;
+}
+
+void Projectile::Initialize(Graphics *graphics)
 {
 	size = 0;
 
@@ -102,11 +112,11 @@ void Cube::Initialize(Graphics *graphics)
 	indices[35] = 6;
 }
 
-void Cube::Update(float dt)
+void Projectile::Update(float dt)
 {
 }
 
-void Cube::Draw(Graphics *graphics, Matrix4x4 relativeTo, float dt)
+void Projectile::Draw(Graphics *graphics, Matrix4x4 relativeTo, float dt)
 {
 	GLenum error = glGetError();
 
@@ -139,7 +149,39 @@ void Cube::Draw(Graphics *graphics, Matrix4x4 relativeTo, float dt)
 	glDisableClientState(GL_INDEX_ARRAY);
 }
 
-void Cube::SetVertex(int index, float x, float y, float z, float r, float g, float b, float a)
+
+bool Projectile::IsOutBounds()
+{
+	if ((_transform.position.x > CAMERA_SIZE)
+		|| (_transform.position.y > CAMERA_SIZE)
+		|| (_transform.position.x < CAMERA_SIZE * -1)
+		|| (_transform.position.y < CAMERA_SIZE * -1))
+	{
+		return true;
+
+	}
+	else {
+		return false;
+	}
+
+
+}
+void Projectile::Move(Direction direction, float dt)
+{
+	float movement = speed * dt;
+
+	if (direction == UP)
+	{
+		_transform.position.y += movement;
+	}
+	else if (direction == DOWN)
+	{
+		_transform.position.y -= movement;
+	}
+
+
+}
+void Projectile::SetVertex(int index, float x, float y, float z, float r, float g, float b, float a)
 {
 	/*vertices[index].position.x = x;
 	vertices[index].position.y = y;

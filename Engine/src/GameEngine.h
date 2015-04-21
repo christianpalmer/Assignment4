@@ -10,6 +10,7 @@
 #include "MathUtils.h"
 #include "Timer.h"
 #include <vector>
+#include <SDL_mixer.h>
 
 // Forward declaring our renderer and window.
 // Because we're using them as pointers, we don't need to know their size
@@ -18,7 +19,7 @@ struct SDL_Renderer;
 struct SDL_Window;
 class GameObject;
 class Graphics;
-
+class SoundHelper;
 class GameEngine
 {
 public:
@@ -35,10 +36,10 @@ public:
   void Draw();
 
   ~GameEngine();
+  bool _running = true;
 
 protected:
   GameEngine();
-
   virtual void InitializeImpl() = 0;
   virtual void UpdateImpl(float dt) = 0;
   virtual void DrawImpl(Graphics *graphics, float dt) = 0;

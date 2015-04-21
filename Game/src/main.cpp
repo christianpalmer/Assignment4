@@ -8,7 +8,7 @@ int main(int argc, char** argv)
   GameEngine *engine = GameEngine::CreateInstance();
   engine->Initialize();
 
-  while(true)
+  while(engine->_running)
   {
     engine->Update();
     engine->Draw();

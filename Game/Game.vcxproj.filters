@@ -19,6 +19,15 @@
     <ClCompile Include="src\Cube.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="src\Player.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Projectile.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enemy.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h">
@@ -27,5 +36,13 @@
     <ClInclude Include="src\Cube.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Projectile.h" />
+    <ClInclude Include="src\Enemy.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="sounds\die.wav" />
+    <Media Include="sounds\gameOver.wav" />
+    <Media Include="sounds\music.wav" />
   </ItemGroup>
 </Project>

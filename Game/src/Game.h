@@ -2,9 +2,11 @@
 
 #include <GameEngine.h>
 
+
 union SDL_Event;
 class Graphics;
 class Camera;
+class ParallaxSystem;
 
 class Game: public GameEngine
 {
@@ -12,9 +14,14 @@ class Game: public GameEngine
 
 public:
   ~Game();
+  SoundHelper* _soundHelper;
 
 protected:
+	Camera *_parallaxCamera;
+	ParallaxSystem *_backgroundParallaxSystem;
+
   Game();
+  char* _windowTitle;
 
   void InitializeImpl();
   void UpdateImpl(float dt);
@@ -24,5 +31,8 @@ protected:
   void CalculateDrawOrder(std::vector<GameObject *>& drawOrder);
   void CalculateCameraViewpoint(Camera *camera);
 
+  void Restart();
+  void GameOver();
+  void UpdateTitle();
   Camera *_gameCamera;
 };

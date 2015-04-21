@@ -6,6 +6,8 @@ Vector2(),
 z(0.0f)
 { }
 
+
+
 Vector3::Vector3(float x, float y, float z) : 
 Vector2(x, y), 
 z(z) 
@@ -20,6 +22,7 @@ Vector3 Vector3::One()
 {
   return Vector3(1.0f, 1.0f, 1.0f);
 }
+
 
 float Vector3::Dot(Vector3 first, Vector3 second)
 {

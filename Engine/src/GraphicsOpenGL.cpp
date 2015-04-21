@@ -50,6 +50,11 @@ void GraphicsOpenGL::SetClearColour(float r, float g, float b, float a)
   glClearColor(r, g, b, a);
 }
 
+SDL_Renderer* GraphicsOpenGL::GetRenderer()
+{
+	return (SDL_Renderer *)_rendererObject;
+}
+
 void GraphicsOpenGL::ClearScreen()
 {
   // Clear the renderer with the current draw colour.

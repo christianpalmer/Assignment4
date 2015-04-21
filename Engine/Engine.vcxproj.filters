@@ -64,6 +64,15 @@
     <ClCompile Include="src\MathUtils\Matrix4x4.cpp">
       <Filter>Source\MathUtils</Filter>
     </ClCompile>
+    <ClCompile Include="src\SoundHelper.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parallax\ParallaxLayer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parallax\ParallaxSystem.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameEngine.h">
@@ -99,5 +108,8 @@
     <ClInclude Include="src\Cameras\OrthographicCamera.h">
       <Filter>Source\Cameras</Filter>
     </ClInclude>
+    <ClInclude Include="src\SoundHelper.h" />
+    <ClInclude Include="src\Parallax\ParallaxLayer.h" />
+    <ClInclude Include="src\Parallax\ParallaxSystem.h" />
   </ItemGroup>
 </Project>

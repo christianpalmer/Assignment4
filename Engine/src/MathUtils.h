@@ -1,4 +1,50 @@
 #pragma once
+#include <SDL.h>
+
+
+#define SPACESHIP_SIZE 1.0f
+#define PROJECTILE_SIZE 0.15f
+#define WORLD_SIZE 640
+#define CAMERA_SIZE 10.0f
+#define MAX_ENEMIES 10
+#define SHOT_INTERVAL 0.3
+#define SPAWN_TIME 2.5
+enum Direction { LEFT = 0, RIGHT, UP, DOWN };
+
+
+
+
+const SDL_MessageBoxButtonData buttons[] = {
+	{ /* .flags, .buttonid, .text */        0, 0, "no" },
+	{ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
+};
+
+const SDL_MessageBoxColorScheme colorScheme = {
+	{ /* .colors (.r, .g, .b) */
+		/* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+		{ 255, 0, 0 },
+		/* [SDL_MESSAGEBOX_COLOR_TEXT] */
+		{ 0, 255, 0 },
+		/* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+		{ 255, 255, 0 },
+		/* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+		{ 0, 0, 255 },
+		/* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+		{ 255, 0, 255 }
+	}
+};
+
+const SDL_MessageBoxData messageboxdata = {
+	SDL_MESSAGEBOX_INFORMATION, /* .flags */
+	NULL, /* .window */
+	"Game Over", /* .title */
+	"Game Over! Do you want to play again?", /* .message */
+	SDL_arraysize(buttons), /* .numbuttons */
+	buttons, /* .buttons */
+	&colorScheme /* .colorScheme */
+
+};
+
 
 // A structure to hold two floats. Similar to SDL_Point (though it contains ints).
 struct Vector2

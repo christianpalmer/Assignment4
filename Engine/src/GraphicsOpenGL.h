@@ -13,5 +13,7 @@ public:
 
   void Present();
 
+  SDL_Renderer *GetRenderer();
+
 protected:
 };

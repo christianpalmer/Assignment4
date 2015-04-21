@@ -1,9 +1,11 @@
 #include "GameEngine.h"
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include "MathUtils.h"
 #include "Graphics.h"
 #include "GraphicsOpenGL.h"
+#include "GraphicsSDL.h"
 #include <SDL_opengl.h>
 
 GameEngine::GameEngine()
@@ -24,7 +26,7 @@ void GameEngine::Initialize()
 
   _window = SDL_CreateWindow("Engine",
     SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-    640, 640,
+	WORLD_SIZE, WORLD_SIZE,
     SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 
   _graphicsObject = new GraphicsOpenGL();
@@ -41,6 +43,8 @@ void GameEngine::Initialize()
 
 void GameEngine::Shutdown()
 {
+	_running = false;
+
   /* Stop the engine timer as we're shutting down. */
   _engineTimer.Stop();
 
